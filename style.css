@@ -16,14 +16,12 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-image: url('images/fondo-nubes2.avif');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, #f5e1c8, #f0c27b);
 }
 
 .flipbook {
-    width: 1000px;
-    height: 600px;
+    width: 1200px;
+    height: 720px;
     filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
 }
 
@@ -56,7 +54,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 0 40px rgba(139, 115, 85, 0.08);
     /* Sombra interna para dar textura de libro */
@@ -64,8 +62,9 @@ body {
 
 
 .page img {
-    width: 70%;
-    margin: auto;
+    width: 65%;
+    max-height: 320px;
+    margin: 0 auto;
     object-fit: cover;
     /* Máscara para bordes degradados */
     -webkit-mask-image: radial-gradient(circle, black 65%, transparent 95%);
@@ -85,12 +84,12 @@ body {
 }
 
 p {
-    font-size: 24px;
-    /* Letra un poco más grande para niños */
-    line-height: 1.6;
+    font-size: 18px;
+    /* Letra adaptada para dos textos */
+    line-height: 1.4;
     text-align: center;
-    padding: 20px 50px;
-    margin-bottom: 50px;
+    padding: 5px 30px;
+    margin-bottom: 5px;
     font-family: "Playwrite NO", sans-serif;
     font-weight: 500;
     /* Letra un poco más gordita */

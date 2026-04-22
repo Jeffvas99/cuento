@@ -39,14 +39,15 @@
     <div>
       <img src="images/escenaCuatro1.png" alt="" />
       <p>Ohhh! <br>
-        What a big surprise he got, when he saw a violet getting on a seahorse, with a snail necklace and a coral comb!</p>
+        What a big surprise he got! <br>
+         When he saw a violet getting on a seahorse with a snail necklace and a coral comb!</p>
       <p>¡Ohhh! <br>
         ¡Qué gran sorpresa se llevó! <br>
          Al ver una violeta subir a un caballito de mar con un collar de caracol y un peine de coral!</p>
     </div>
     <div>
       <img src="images/escenaQuinta.png" alt="" />
-      <p>The violet got off at the beach, shook her petals and looked curiously out of the corner of her eye at the dolphin, who was leaving the Tulip by her side.</p>
+      <p>The violet got off at the beach. She shook her petals and looked curiously out of the corner of her eye at the dolphin, who was leaving the Tulip by her side.</p>
       <p>La violeta se bajó en la playa. Sacudió sus pétalos y miró curiosa por el rabillo del ojo al delfín, que dejaba a su lado al Tulipán.</p>
     </div>
     <div>
@@ -56,8 +57,9 @@
     </div>
     <div>
       <img src="images/escenaOctava.png" alt="">
-      <p>And since then, the violet and the tulip hope to find an orchid… who maybe is named Penelope, or maybe, Salome. <br>
-            Or, maybe… will change her name from time to time.</p>
+      <p>And, since then, the violet and the tulip hope to find an orchid… <br> 
+          who maybe is named Penelope, or maybe, Salome. <br>
+          Or, maybe… will change her name from time to time.</p>
       <p>Y, desde entonces, la violeta y el tulipán esperan encontrar una orquídea… <br> 
           que tal vez se llame Penélope, o tal vez, Salomé. <br>
           O, tal vez… cambiará su nombre de vez en vez.</p>
@@ -69,7 +71,55 @@
   <script src="jquery.js"></script>
   <script src="turn.js"></script>
   <script>
-    $(".flipbook").turn();
+    function resizeFlipbook() {
+      var flipbook = $(".flipbook");
+      var winW = $(window).width();
+      var winH = $(window).height();
+      
+      // Switch to single page mode on small screens
+      var isMobile = winW < 768;
+      var displayMode = isMobile ? 'single' : 'double';
+      
+      if (flipbook.turn('is')) {
+          flipbook.turn('display', displayMode);
+      }
+
+      // Original book size
+      var bookW = 1000;
+      var bookH = 600;
+      
+      // In single page mode, the book width is halved
+      var actualW = isMobile ? bookW / 2 : bookW;
+
+      // Calculate scale to fit screen, leaving 40px padding
+      var scaleW = (winW - 40) / actualW;
+      var scaleH = (winH - 40) / bookH;
+      var scale = Math.min(scaleW, scaleH);
+      
+      // Prevent scaling up past original size
+      if (scale > 1) scale = 1;
+
+      flipbook.css({
+          'transform': 'scale(' + scale + ')',
+          'transform-origin': 'center center'
+      });
+    }
+
+    // Initialize flipbook
+    $(".flipbook").turn({
+        width: 1000,
+        height: 600,
+        autoCenter: true,
+        display: $(window).width() < 768 ? 'single' : 'double'
+    });
+
+    // Listen for resize events
+    $(window).on('resize', function() {
+        resizeFlipbook();
+    });
+
+    // Call once on load
+    resizeFlipbook();
   </script>
 </body>
 

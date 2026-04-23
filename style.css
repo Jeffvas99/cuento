@@ -47,7 +47,7 @@ body {
 }
 
 .flipbook .page {
-    background-color: #fffaf0;
+    background-color: #f6ebd6;
     /* Color crema suave, tipo papel de cuento */
     display: flex;
     flex-direction: column;
